@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Beautiful Sunset",
+    "image": "https://placekitten.com/400/200",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  {
+    "id": 2,
+    "title": "Tech Trends 2025",
+    "image": "https://placekitten.com/401/200",
+    "content": "Curabitur blandit tempus porttitor."
+  }
+]
