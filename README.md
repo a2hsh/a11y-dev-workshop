@@ -3,7 +3,7 @@
 ## 🎯 Workshop Overview
 
 **Title:** Comprehensive Digital Compliance: From Gaps to Sustainable Technical Solutions  
-**Instructor:** Abdul Aziz Al-Shamasi – Digital Inclusion Expert, Digital Inclusion Program  
+**Instructor:** Abdulaziz Alshmasi – Digital Accessibility Expert, Digital Inclusivity Program, Digital Government Authority, Saudi Arabia  
 **Date:** July 30, 2025 | 10:00 AM - 3:00 PM | Riyadh  
 
 ### Why Digital Accessibility Matters
@@ -15,7 +15,7 @@
 
 - Equip participants with skills to address critical accessibility defects
 - Establish a culture of **Audit → Fix → Verify** within government teams
-- Rapid alignment with WCAG 2.2 AA and national digital inclusion policies
+- Rapid alignment with WCAG 2.2 AA and national digital inclusivity policies
 
 ## 🛠 Prerequisites & Setup
 
@@ -218,7 +218,7 @@ By the end of this workshop, you will:
 
 ## 📞 Support & Contact
 
-**Digital Inclusion Program**  
+**Digital Inclusivity Program, Digital Government Authority**  
 Email: dip@dga.gov.sa
 
 *"Accessibility is a collective responsibility"*
