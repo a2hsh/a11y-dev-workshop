@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import logo from '../logo.svg';
+import logoDark from '../logo-dark.svg';
 import NewsCard from '../../src/components/NewsCard';
 import LoginModal from '../../src/components/LoginModal';
 import AddNewsModal from '../../src/components/AddNewsModal';
@@ -21,7 +22,6 @@ interface Article {
 }
 
 export default function Home() {
-  const navigate = useNavigate();
   const [articles, setArticles] = useState<Article[]>(newsData);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -57,9 +57,20 @@ export default function Home() {
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
-            <div>
-              <div className="text-3xl font-bold text-gray-900">News Hub</div>
-              <div className="text-gray-600 mt-1">Your premier source for breaking news</div>
+            <div className="flex items-center gap-4">
+              <img
+                src={logo}
+                className="block h-10 w-auto dark:hidden"
+                draggable="false"
+              />
+              <img
+                src={logoDark}
+                className="hidden h-10 w-auto dark:block"
+                draggable="false"
+              />
+              <div>
+                <div className="text-gray-600 mt-1">Your premier source for breaking news</div>
+              </div>
             </div>
             
             <div className="flex items-center space-x-4">

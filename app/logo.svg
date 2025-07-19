@@ -1,0 +1,9 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="newsHubLogoTitle newsHubLogoDesc" role="img">
+  <title id="newsHubLogoTitle">News Hub Logo</title>
+  <desc id="newsHubLogoDesc">A stylized newspaper icon with the words News Hub</desc>
+  <rect x="2" y="8" width="32" height="24" rx="4" fill="#2563eb"/>
+  <rect x="8" y="14" width="20" height="3" rx="1.5" fill="#fff"/>
+  <rect x="8" y="20" width="14" height="2" rx="1" fill="#dbeafe"/>
+  <rect x="8" y="24" width="10" height="2" rx="1" fill="#dbeafe"/>
+  <text x="44" y="27" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" aria-hidden="true">News Hub</text>
+</svg>
