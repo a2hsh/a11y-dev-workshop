@@ -6,7 +6,11 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "lighthouse:a11y": "node scripts/lighthouse-audit.js",
+    "lighthouse:quick": "node scripts/quick-a11y-check.js"
   },
   "dependencies": {
     "@react-router/node": "^7.7.0",
@@ -17,11 +21,20 @@
     "react-router": "^7.7.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.10.2",
     "@react-router/dev": "^7.7.0",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "axe-core": "^4.10.3",
+    "chrome-launcher": "^1.2.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "lighthouse": "^12.8.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",

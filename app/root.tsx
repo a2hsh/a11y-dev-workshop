@@ -1,3 +1,14 @@
+import React from "react";
+// Integrate @axe-core/react for dev-time accessibility checks (browser only)
+if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
+  import('@axe-core/react').then(axe => {
+    import('react').then(React => {
+      import('react-dom').then(ReactDOM => {
+        axe.default(React, ReactDOM, 1000);
+      });
+    });
+  });
+}
 import {
   isRouteErrorResponse,
   Links,
@@ -8,6 +19,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { AxeDevPanel } from "./AxeDevPanel";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -34,6 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        {import.meta.env.DEV && <AxeDevPanel />}
         <ScrollRestoration />
         <Scripts />
       </body>

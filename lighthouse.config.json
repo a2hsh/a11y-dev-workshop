@@ -1,0 +1,103 @@
+{
+  "lighthouse": {
+    "development": {
+      "baseUrl": "http://localhost:5173",
+      "routes": [
+        "/",
+        "/login",
+        "/article/1",
+        "/article/2",
+        "/article/3"
+      ],
+      "chromeFlags": [
+        "--headless",
+        "--no-sandbox",
+        "--disable-dev-shm-usage"
+      ],
+      "outputDir": "./lighthouse-reports/dev",
+      "thresholds": {
+        "accessibility": 70,
+        "warning": 70,
+        "error": 50
+      }
+    },
+    "production": {
+      "baseUrl": "https://your-production-url.com",
+      "routes": [
+        "/",
+        "/login",
+        "/article/1",
+        "/article/2",
+        "/article/3"
+      ],
+      "chromeFlags": [
+        "--headless",
+        "--no-sandbox"
+      ],
+      "outputDir": "./lighthouse-reports/prod",
+      "thresholds": {
+        "accessibility": 90,
+        "warning": 80,
+        "error": 70
+      }
+    },
+    "ci": {
+      "baseUrl": "http://localhost:5173",
+      "routes": [
+        "/",
+        "/login",
+        "/article/1"
+      ],
+      "chromeFlags": [
+        "--headless",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu"
+      ],
+      "outputDir": "./lighthouse-reports/ci",
+      "thresholds": {
+        "accessibility": 80,
+        "warning": 70,
+        "error": 60
+      }
+    }
+  },
+  "accessibility": {
+    "focusedAudits": [
+      "alt-text",
+      "aria-props",
+      "aria-proptypes",
+      "aria-unsupported-elements",
+      "button-name",
+      "bypass",
+      "color-contrast",
+      "document-title",
+      "form-field-multiple-labels",
+      "heading-order",
+      "html-has-lang",
+      "image-alt",
+      "input-image-alt",
+      "label",
+      "landmark-one-main",
+      "link-name",
+      "list",
+      "listitem",
+      "meta-viewport",
+      "object-alt",
+      "tabindex",
+      "td-headers-attr",
+      "th-has-data-cells",
+      "valid-lang"
+    ],
+    "workshopIssues": [
+      "Missing alt text for images",
+      "Poor color contrast",
+      "Missing form labels",
+      "Improper heading hierarchy",
+      "Missing skip links",
+      "Interactive elements without keyboard support",
+      "Missing ARIA labels",
+      "Invalid ARIA attributes"
+    ]
+  }
+}
