@@ -39,7 +39,7 @@ jobs:
         run: npm run build          # Vite → build/
 
       - name: ♻️  SPA 404 fallback   # keeps React‑Router refreshes alive
-        run: cp build/index.html build/404.html
+        run: cp build/client/index.html build/client/404.html
 
       - name: ⚙️  Configure Pages    # enables the Pages env on first run
         uses: actions/configure-pages@v3
@@ -49,7 +49,7 @@ jobs:
       - name: ⬆️  Upload Pages artifact
         uses: actions/upload-pages-artifact@v3   # <-- bump from v1
         with:
-          path: ./build                          # <-- Vite’s output dir
+          path: ./build/client                          # <-- Vite’s output dir
       # -------------------------------------------------------------------
 
       # deploy-pages@v4 is required to consume the v3 artifact above

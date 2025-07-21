@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  base: "/a11y-dev-workshop/",
+// base depends on environment, cause GitHub Pages uses a subpath
+  base: process.env.NODE_ENV === "production" ? "/a11y-dev-workshop/" : "/",
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 });
