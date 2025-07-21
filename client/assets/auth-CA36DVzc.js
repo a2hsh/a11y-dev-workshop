@@ -1,0 +1,1 @@
+const e="isLoggedIn",t=typeof window<"u",n=(o,r)=>o==="admin"&&r==="admin"?(t&&localStorage.setItem(e,"true"),!0):!1,s=()=>{t&&localStorage.removeItem(e)},a=()=>t?localStorage.getItem(e)==="true":!1;export{s as a,a as i,n as l};
