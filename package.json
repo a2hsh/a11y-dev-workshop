@@ -2,6 +2,7 @@
   "name": "a11y-dev-workshop",
   "private": true,
   "type": "module",
+  "homepage": ".",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
