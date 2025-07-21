@@ -18,8 +18,10 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+
 import type { Route } from "./+types/root";
 import { AxeDevPanel } from "./AxeDevPanel";
+
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
