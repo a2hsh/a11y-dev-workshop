@@ -2,8 +2,8 @@
   "name": "a11y-dev-workshop",
   "private": true,
   "type": "module",
-  "homepage": ".",
-  "scripts": {
+  "homepage": "https://a2hsh.github.io/a11y-dev-workshop",
+  "scripts": { 	
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
