@@ -21,7 +21,7 @@ import {
 
 import type { Route } from "./+types/root";
 import { AxeDevPanel } from "./AxeDevPanel";
-
+import { WorkshopFooter } from "./components/WorkshopFooter";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -48,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <WorkshopFooter />
         {import.meta.env.DEV && <AxeDevPanel />}
         <ScrollRestoration />
         <Scripts />
