@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from '../i18n/i18n';
 
 export function WorkshopFooter() {
   // Only show in production
@@ -8,17 +9,15 @@ export function WorkshopFooter() {
     <footer className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-12 mt-16">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold mb-2">🧠 Digital Accessibility Workshop</h2>
+          <h2 className="text-2xl font-bold mb-2">🧠 {t('footer_title')}</h2>
           <p className="text-blue-200 text-lg">
-            From Gaps to Sustainable Technical Solutions
+            {t('footer_tagline')}
           </p>
         </div>
         
         <div className="mb-8">
           <p className="text-blue-100 text-base leading-relaxed max-w-2xl mx-auto">
-            This intentionally inaccessible news app was designed by a blind accessibility expert 
-            to demonstrate real-world barriers. It contains deliberate violations of accessibility 
-            guidelines for educational purposes.
+            {t('footer_description')}
           </p>
         </div>
 
@@ -40,16 +39,16 @@ export function WorkshopFooter() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            📚 Get Started
+            {t('footer_get_started')}
           </a>
         </div>
 
         <div className="text-sm text-blue-300">
           <p className="mb-2">
-            <strong>Digital Inclusivity Program</strong> • Digital Government Authority, Saudi Arabia
+            <strong>{t('footer_program')}</strong> • {t('footer_authority')}
           </p>
           <p className="italic">
-            &ldquo;Accessibility is a collective responsibility&rdquo;
+            &ldquo;{t('footer_quote')}&rdquo;
           </p>
         </div>
       </div>

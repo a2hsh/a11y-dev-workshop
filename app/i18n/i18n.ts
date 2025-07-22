@@ -12,6 +12,13 @@ export type SupportedLang = 'en' | 'ar';
 
 const translations: Record<SupportedLang, Record<string, string>> = {
   en: {
+    'footer_title': 'Digital Accessibility Workshop',
+    'footer_tagline': 'From Gaps to Sustainable Technical Solutions',
+    'footer_description': 'This intentionally inaccessible news app was designed by a blind accessibility expert to demonstrate real-world barriers. It contains deliberate violations of accessibility guidelines for educational purposes.',
+    'footer_get_started': 'Get Started',
+    'footer_program': 'Digital Inclusivity Program',
+    'footer_authority': 'Digital Government Authority, Saudi Arabia',
+    'footer_quote': 'Accessibility is a collective responsibility',
     'add_news': 'Add News',
     'read_more': 'Read More →',
     'show_violations_aria': 'Show accessibility violations ({count})',
@@ -51,6 +58,13 @@ const translations: Record<SupportedLang, Record<string, string>> = {
     'add_article': 'Add Article',
   },
   ar: {
+    'footer_title': 'ورشة الامتثال الرقمي الشامل',
+    'footer_tagline': 'من الفجوات إلى الحلول التقنية المستدامة',
+    'footer_description': 'تم تصميم هذا التطبيق الإخباري غير المتوافق عمدًا بواسطة خبير وصول كفيف لمحاكاة العوائق الواقعية. يحتوي على مخالفات متعمدة لإرشادات الوصول لأغراض تعليمية.',
+    'footer_get_started': 'ابدأ الآن',
+    'footer_program': 'برنامج الشمولية الرقمية',
+    'footer_authority': 'هيئة الحكومة الرقمية، السعودية',
+    'footer_quote': 'إمكانية الوصول مسؤولية جماعية',
     'add_news': 'أضف خبرًا',
     'show_violations_aria': 'عرض مخالفات الوصول ({count})',
     'show_one_issue': 'عرض مخالفة وصول واحدة',
