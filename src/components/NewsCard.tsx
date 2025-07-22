@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import IconButton from './IconButton';
+import { t } from '../../app/i18n/i18n';
 import { isLoggedIn } from '../utils/auth';
 
 interface NewsCardProps {
@@ -54,7 +55,7 @@ export default function NewsCard({ article, onDelete }: NewsCardProps) {
         </div>
         
         <div className="text-gray-500 text-sm font-medium hover:text-gray-400 transition-colors">
-          Read More →
+          {t('read_more')}
         </div>
       </div>
     </div>

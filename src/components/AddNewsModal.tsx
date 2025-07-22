@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Modal from './Modal';
+import { t } from '../../app/i18n/i18n';
 
 interface AddNewsModalProps {
   isOpen: boolean;
@@ -18,15 +19,14 @@ export default function AddNewsModal({ isOpen, onClose, onAdd }: AddNewsModalPro
     e.preventDefault();
     
     const newErrors = { title: '', image: '', content: '' };
-    
     if (!title) {
-      newErrors.title = 'Title is required';
+      newErrors.title = t('title_required');
     }
     if (!image) {
-      newErrors.image = 'Image URL is required';
+      newErrors.image = t('image_required');
     }
     if (!content) {
-      newErrors.content = 'Content is required';
+      newErrors.content = t('content_required');
     }
     
     setErrors(newErrors);
@@ -46,13 +46,12 @@ export default function AddNewsModal({ isOpen, onClose, onAdd }: AddNewsModalPro
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="p-8">
-        <div className="text-2xl font-bold text-gray-900 mb-6">Add News Article</div>
-        
+        <div className="text-2xl font-bold text-gray-900 mb-6">{t('add_news_article')}</div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <input
               type="text"
-              placeholder="Article Title"
+              placeholder={t('article_title')}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
@@ -63,11 +62,10 @@ export default function AddNewsModal({ isOpen, onClose, onAdd }: AddNewsModalPro
               <div className="text-red-500 text-sm mt-1">{errors.title}</div>
             )}
           </div>
-          
           <div>
             <input
               type="url"
-              placeholder="Image URL"
+              placeholder={t('image_url')}
               value={image}
               onChange={(e) => setImage(e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
@@ -78,11 +76,10 @@ export default function AddNewsModal({ isOpen, onClose, onAdd }: AddNewsModalPro
               <div className="text-red-500 text-sm mt-1">{errors.image}</div>
             )}
           </div>
-          
           <div>
             <textarea
               rows={4}
-              placeholder="Article Content"
+              placeholder={t('article_content')}
               value={content}
               onChange={(e) => setContent(e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
@@ -93,12 +90,11 @@ export default function AddNewsModal({ isOpen, onClose, onAdd }: AddNewsModalPro
               <div className="text-red-500 text-sm mt-1">{errors.content}</div>
             )}
           </div>
-          
           <button
             type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
           >
-            Add Article
+            {t('add_article')}
           </button>
         </form>
       </div>

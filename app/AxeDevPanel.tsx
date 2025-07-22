@@ -4,6 +4,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import type { Result, NodeResult } from "axe-core";
+import { t, tFormat, getLang } from "./i18n/i18n";
 import { useLocation } from "react-router";
 
 
@@ -14,15 +15,34 @@ export function AxeDevPanel() {
   const modalRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // Re-run axe-core on every route change
+  // Run axe-core audit on initial mount
   useEffect(() => {
     if (process.env.NODE_ENV === "production" || typeof window === "undefined") return;
-    import("axe-core").then(axe => {
-      axe.default.run(document, {}, (err, results) => {
-        if (err) return;
-        setViolations(results.violations as Result[]);
+    const runAudit = () => {
+      import("axe-core").then(axe => {
+        axe.default.run(document, {}, (err, results) => {
+          if (err) return;
+          setViolations(results.violations as Result[]);
+        });
       });
-    });
+    };
+    const timer = window.setTimeout(runAudit, 500); // Increased delay for initial mount
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  // Run axe-core audit on every route change
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production" || typeof window === "undefined") return;
+    const runAudit = () => {
+      import("axe-core").then(axe => {
+        axe.default.run(document, {}, (err, results) => {
+          if (err) return;
+          setViolations(results.violations as Result[]);
+        });
+      });
+    };
+    const timer = window.setTimeout(runAudit, 100);
+    return () => window.clearTimeout(timer);
   }, [location]);
 
   // Trap focus in modal
@@ -41,17 +61,28 @@ export function AxeDevPanel() {
     <>
       {violations.length > 0 && (
         <button
-          aria-label={`Show accessibility violations (${violations.length})`}
+          aria-label={tFormat('show_violations_aria', { count: violations.length })}
           style={{
-            position: "fixed", bottom: 24, right: 24, zIndex: 9999,
-            background: "#b71c1c", color: "#fff", border: "none", borderRadius: 24, padding: "12px 24px", fontWeight: 600, fontSize: 16, boxShadow: "0 2px 8px #0003", cursor: "pointer"
+            position: "fixed",
+            bottom: 24,
+            [getLang() === 'ar' ? 'left' : 'right']: 64,
+            zIndex: 9999,
+            background: "#b71c1c",
+            color: "#fff",
+            border: "none",
+            borderRadius: 24,
+            padding: "12px 24px",
+            fontWeight: 600,
+            fontSize: 16,
+            boxShadow: "0 2px 8px #0003",
+            cursor: "pointer"
           }}
           onClick={() => setOpen(true)}
           hidden={open}
         >
           {violations.length === 1
-            ? "Show 1 Accessibility Issue"
-            : `Show ${violations.length} Accessibility Issues`}
+            ? t('show_one_issue')
+            : tFormat('show_many_issues', { count: violations.length })}
         </button>
       )}
       {open && violations.length > 0 && (
@@ -71,7 +102,7 @@ export function AxeDevPanel() {
             }}
           >
             <button
-              aria-label="Close accessibility violations panel"
+            aria-label={t('close_panel_aria')}
               onClick={() => setOpen(false)}
               onKeyDown={e => { if (e.key === "Escape") setOpen(false); }}
               style={{ position: "absolute", top: 8, right: 8, background: "none", border: "none", fontSize: 24, cursor: "pointer" }}
@@ -79,9 +110,9 @@ export function AxeDevPanel() {
               ×
             </button>
             <h2 id="axe-modal-title" style={{ marginTop: 0, color: "#b71c1c" }}>
-              Accessibility Violations ({violations.length})
+              {tFormat('violations_heading', { count: violations.length })}
             </h2>
-            <div role="list" aria-label="Accessibility Violations">
+            <div role="list" aria-label={t('violations_list_aria')}>
               {violations.map(v => (
                 <div key={v.id} style={{ marginBottom: 16, border: "1px solid #eee", borderRadius: 6, boxShadow: expanded === v.id ? "0 2px 8px #b71c1c33" : undefined }}>
                   <button
@@ -104,7 +135,7 @@ export function AxeDevPanel() {
                     >
                       <div style={{ marginBottom: 8 }}>{v.description}</div>
                       <div style={{ fontSize: 14, color: "#444" }}>
-                        <strong>Impact:</strong> {v.impact || "unknown"}
+                        <strong>{t('impact')}:</strong> {v.impact || t('unknown')}
                       </div>
                       <ul style={{ margin: "8px 0 0 0", padding: 0, listStyle: "none" }}>
                         {v.nodes.map((n: NodeResult, i: number) => (
@@ -115,8 +146,8 @@ export function AxeDevPanel() {
                         ))}
                       </ul>
                       {v.helpUrl && (
-                        <a href={v.helpUrl} target="_blank" rel="noopener noreferrer" style={{ color: "#1976d2", fontSize: 14 }} aria-label={`Learn more about ${v.help}`}>
-                          Learn more
+                        <a href={v.helpUrl} target="_blank" rel="noopener noreferrer" style={{ color: "#1976d2", fontSize: 14 }} aria-label={tFormat('learn_more_aria', { help: v.help })}>
+                          {t('learn_more')}
                         </a>
                       )}
                     </div>

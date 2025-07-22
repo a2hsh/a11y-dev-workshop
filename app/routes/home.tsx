@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../logo.svg';
 import logoDark from '../logo-dark.svg';
 import NewsCard from '../../src/components/NewsCard';
 import LoginModal from '../../src/components/LoginModal';
 import AddNewsModal from '../../src/components/AddNewsModal';
 import { isLoggedIn, logout } from '../../src/utils/auth';
-import newsData from '../../src/data/news.json';
+import newsDataEn from '../../src/data/news.json';
+import newsDataAr from '../../src/data/news.ar.json';
+import { t, getLang, setLang } from '../i18n/i18n';
 
 export function meta() {
   return [
-    { title: "News Hub - Stay Informed" },
-    { name: "description", content: "Your premier destination for breaking news and insights" },
+    { title: t('site_title') },
+    { name: "description", content: t('site_description') },
   ];
 }
 
@@ -22,19 +24,26 @@ interface Article {
 }
 
 export default function Home() {
-  const [articles, setArticles] = useState<Article[]>(newsData);
+  const [lang, setLangState] = useState(getLang());
+  const [articles, setArticles] = useState<Article[]>(getLang() === 'ar' ? newsDataAr : newsDataEn);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     setLoggedIn(isLoggedIn());
+    const currentLang = getLang();
+    setLangState(currentLang);
+    setArticles(currentLang === 'ar' ? newsDataAr : newsDataEn);
   }, []);
+  // ...existing code...
 
   const handleLoginSuccess = () => {
     setLoggedIn(true);
     window.location.reload(); // Force refresh to update state
   };
+
+  // ...existing code...
 
   const handleLogout = () => {
     logout();
@@ -52,7 +61,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen bg-gray-50${lang === 'ar' ? ' rtl' : ''}`}> 
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
@@ -69,7 +78,39 @@ export default function Home() {
                 draggable="false"
               />
               <div>
-                <div className="text-gray-600 mt-1">Your premier source for breaking news</div>
+                <div className="text-gray-600 mt-1">{t('site_tagline')}</div>
+              </div>
+              <div className="ml-4 flex gap-2">
+                {lang !== 'en' && (
+                  <span
+                    onClick={() => { setLang('en'); setLangState('en'); window.location.reload(); }}
+                    style={{
+                      padding: '6px 16px',
+                      borderRadius: '20px',
+                      background: '#eee',
+                      color: '#222',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      cursor: 'pointer',
+                      transition: 'background 0.2s, color 0.2s',
+                    }}
+                  >English</span>
+                )}
+                {lang !== 'ar' && (
+                  <span
+                    onClick={() => { setLang('ar'); setLangState('ar'); window.location.reload(); }}
+                    style={{
+                      padding: '6px 16px',
+                      borderRadius: '20px',
+                      background: '#eee',
+                      color: '#222',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      cursor: 'pointer',
+                      transition: 'background 0.2s, color 0.2s',
+                    }}
+                  >العربية</span>
+                )}
               </div>
             </div>
             
@@ -80,13 +121,13 @@ export default function Home() {
                     onClick={() => setIsAddModalOpen(true)}
                     className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors cursor-pointer font-medium"
                   >
-                    Add News
+                    {t('add_news')}
                   </div>
                   <div 
                     onClick={handleLogout}
                     className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors cursor-pointer font-medium"
                   >
-                    Logout
+                    {t('logout')}
                   </div>
                 </>
               ) : (
@@ -94,7 +135,7 @@ export default function Home() {
                   onClick={() => setIsLoginModalOpen(true)}
                   className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer font-medium"
                 >
-                  Login
+                  {t('login')}
                 </div>
               )}
             </div>
@@ -106,13 +147,13 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {articles.length === 0 ? (
           <div className="text-center py-12">
-            <div className="text-2xl font-bold text-gray-500 mb-4">No articles available</div>
+            <div className="text-2xl font-bold text-gray-500 mb-4">{t('no_articles')}</div>
             {loggedIn && (
               <div 
                 onClick={() => setIsAddModalOpen(true)}
                 className="text-blue-600 hover:text-blue-800 cursor-pointer"
               >
-                Add the first article →
+                {t('add_first_article')}
               </div>
             )}
           </div>

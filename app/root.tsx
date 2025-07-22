@@ -38,8 +38,14 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  // Get language from localStorage or browser
+  let lang: 'en' | 'ar' = 'en';
+  if (typeof window !== 'undefined') {
+    lang = localStorage.getItem('site_lang') === 'ar' ? 'ar' : 'en';
+  }
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
   return (
-    <html lang="en">
+    <html lang={lang} dir={dir}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

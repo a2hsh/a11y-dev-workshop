@@ -1,6 +1,9 @@
 import { useParams, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import newsData from '../data/news.json';
+import newsDataEn from '../data/news.json';
+import newsDataAr from '../data/news.ar.json';
+import { getLang } from '../../app/i18n/i18n';
+import { t } from '../../app/i18n/i18n';
 
 interface Article {
   id: number;
@@ -16,6 +19,8 @@ export default function ArticlePage() {
 
   useEffect(() => {
     const articleId = parseInt(id || '0');
+    const lang = getLang();
+    const newsData = lang === 'ar' ? newsDataAr : newsDataEn;
     const found = newsData.find(a => a.id === articleId);
     if (found) {
       setArticle(found);
@@ -26,12 +31,12 @@ export default function ArticlePage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-2xl font-bold text-gray-900 mb-4">Article Not Found</div>
+          <div className="text-2xl font-bold text-gray-900 mb-4">{t('article_not_found')}</div>
           <div 
             onClick={() => navigate('/')}
             className="text-blue-600 hover:text-blue-800 cursor-pointer"
           >
-            ← Back to Home
+            ← {t('back_to_home')}
           </div>
         </div>
       </div>
@@ -58,9 +63,8 @@ export default function ArticlePage() {
           >
             <polyline points="15,18 9,12 15,6"></polyline>
           </svg>
-          Back to Home
+          {t('back_to_home')}
         </div>
-
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="aspect-video w-full overflow-hidden">
             <img 
@@ -68,12 +72,10 @@ export default function ArticlePage() {
               className="w-full h-full object-cover"
             />
           </div>
-          
           <div className="p-8">
             <div className="text-3xl font-bold text-gray-900 mb-6">
               {article.title}
             </div>
-            
             <div className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
               {article.content}
             </div>
