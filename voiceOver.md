@@ -1,5 +1,16 @@
 # VoiceOver Developer Testing Guide
 
+# English | [العربية](./voiceOver.ar.md)
+
+## 📚 Related Guides & Resources
+
+- [Digital Accessibility Workshop: From Gaps to Sustainable Technical Solutions](./README.md)
+- [NVDA Developer Testing Guide](./nvda.md)
+- [How to Fix Accessibility Issues: Step-by-Step Guide](./how-to-fix.md)
+- [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM – Screen Reader Testing](https://webaim.org/articles/screenreader_testing/)
+
 > **Part of the A11y Dev Workshop** - See [README.md](./README.md) for complete workshop setup and course overview.
 
 ## What is VoiceOver?

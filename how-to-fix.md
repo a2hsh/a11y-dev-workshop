@@ -1,5 +1,24 @@
 # How to Fix Accessibility Issues: Step-by-Step Guide
 
+# English | [العربية](./how-to-fix.ar.md)
+
+## 📚 Related Guides & Resources
+
+- [Digital Accessibility Workshop: From Gaps to Sustainable Technical Solutions](./README.md)
+- [NVDA Developer Testing Guide](./nvda.md)
+- [VoiceOver Developer Testing Guide](./voiceOver.md)
+- [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM – Screen Reader Testing](https://webaim.org/articles/screenreader_testing/)
+
+---
+
+> ## ⚠️ Important Warning
+> Do NOT look at this file unless you absolutely need to! The goal of this workshop is hands-on learning, not cheating or copying solutions.
+> Only use this file after you have tried to fix the issues yourself.
+
+---
+
 This guide provides detailed instructions for fixing the accessibility issues in the workshop application, following the two-sprint approach covered in the course.
 
 ## 🎯 Sprint 1: Foundation Fixes

@@ -1,5 +1,17 @@
 # NVDA Developer Testing Guide
 
+# English | [العربية](./nvda.ar.md)
+
+## 📚 Related Guides & Resources
+
+- [Digital Accessibility Workshop: From Gaps to Sustainable Technical Solutions](./README.md)
+- [How to Fix Accessibility Issues: Step-by-Step Guide](./how-to-fix.md)
+- [VoiceOver Developer Testing Guide](./voiceOver.md)
+- [Official NVDA User Guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html)
+- [NVDA Training](https://www.nvaccess.org/get-help/)
+
+---
+
 > **Part of the A11y Dev Workshop** - See [README.md](./README.md) for complete workshop setup and course overview.
 
 ## What is NVDA?

@@ -1,4 +1,7 @@
-# 🧠 Digital Accessibility Workshop: From Gaps to Sustainable Technical Solutions
+
+# Digital Accessibility Workshop: From Gaps to Sustainable Technical Solutions
+
+[العربية README](./README.ar.md)
 
 Welcome to the Digital Accessibility Workshop! This hands-on session is designed to help you identify, fix, and verify accessibility issues in modern web applications. Whether you're new to accessibility or looking to deepen your skills, you'll walk away with real experience and a toolkit for sustainable, inclusive development.
 
@@ -54,10 +57,18 @@ It was designed by a blind accessibility expert to reflect real-world barriers t
    npm run dev
    ```
 
+
 4. **Open the app**
 
    * [http://localhost:5173](http://localhost:5173) (local)
    * [https://a2hsh.github.io/a11y-dev-workshop/](https://a2hsh.github.io/a11y-dev-workshop/) (preview)
+
+---
+
+## 🌐 Language
+
+- [English README](./README.md)
+- [العربية README](./README.ar.md)
 
 ---
 
@@ -76,8 +87,8 @@ It was designed by a blind accessibility expert to reflect real-world barriers t
 
 ✅ Explore the guides:
 
-* [nvda.md](./nvda.md)
-* [voiceOver.md](./voiceOver.md)
+* [NVDA Developer Testing Guide](./nvda.md)
+* [VoiceOver Developer Testing Guide](./voiceOver.md)
 
 ✅ Run the app locally:
 
@@ -192,12 +203,12 @@ This app **intentionally** contains:
 
 ## 📚 Resources
 
-* 🧑‍💻 [nvda.md](./nvda.md) – NVDA guide (Windows)
-* 🍎 [voiceOver.md](./voiceOver.md) – VoiceOver guide (macOS)
+* 🧑‍💻 [NVDA Developer Testing Guide](./nvda.md) – NVDA guide (Windows)
+* 🍎 [VoiceOver Developer Testing Guide](./voiceOver.md) – VoiceOver guide (macOS)
 * 📖 [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)
 * 🔧 [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 * 🧠 [WebAIM – Screen Reader Testing](https://webaim.org/articles/screenreader_testing/)
-* 📘 [how-to-fix.md](./how-to-fix.md) – Step-by-step remediation reference
+* 📘 [How to Fix Accessibility Issues: Step-by-Step Guide](./how-to-fix.md) – Step-by-step remediation reference
 
 ---
 
