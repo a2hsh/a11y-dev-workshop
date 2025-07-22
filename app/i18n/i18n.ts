@@ -108,25 +108,38 @@ const translations: Record<SupportedLang, Record<string, string>> = {
 const LANG_KEY = 'site_lang';
 
 export function getBrowserLang(): SupportedLang {
-  const lang = navigator.language || navigator.languages[0] || 'en';
-  return lang.startsWith('ar') ? 'ar' : 'en';
+  if (typeof navigator !== 'undefined') {
+    const lang = navigator.language || (navigator.languages && navigator.languages[0]) || 'en';
+    return lang.startsWith('ar') ? 'ar' : 'en';
+  }
+  return 'en';
 }
 
 export function getLang(): SupportedLang {
-  const stored = localStorage.getItem(LANG_KEY);
-  if (stored === 'ar' || stored === 'en') {
-    syncHtmlLangDir(stored);
-    return stored;
+  // SSR-safe: fallback to 'en' if localStorage is not available
+  if (typeof window === 'undefined') {
+    return 'en';
   }
-  const browserLang = getBrowserLang();
-  localStorage.setItem(LANG_KEY, browserLang);
-  syncHtmlLangDir(browserLang);
-  return browserLang;
+  try {
+    const stored = localStorage.getItem(LANG_KEY);
+    if (stored === 'ar' || stored === 'en') {
+      syncHtmlLangDir(stored);
+      return stored;
+    }
+    const browserLang = getBrowserLang();
+    localStorage.setItem(LANG_KEY, browserLang);
+    syncHtmlLangDir(browserLang);
+    return browserLang;
+  } catch {
+    return 'en';
+  }
 }
 
 export function setLang(lang: SupportedLang) {
-  localStorage.setItem(LANG_KEY, lang);
-  syncHtmlLangDir(lang);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(LANG_KEY, lang);
+    syncHtmlLangDir(lang);
+  }
 }
 
 export function t(key: string): string {
